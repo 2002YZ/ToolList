@@ -50,12 +50,26 @@ namespace Helper
         /// </summary>
         public void CreateLogFile()
         {
-            string logDir = Directory.GetCurrentDirectory();
+            // string logDir = Directory.GetCurrentDirectory();
+            // if (!Directory.Exists(logDir))
+            // {
+            //     Directory.CreateDirectory(logDir);
+            // }
+            // logPath = logDir + @"\log\" + timeLog + ".txt";
+            string logDir =Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "log"
+            );
+
             if (!Directory.Exists(logDir))
             {
                 Directory.CreateDirectory(logDir);
             }
-            logPath = logDir + @"\log\" + timeLog + ".txt";
+
+            logPath = Path.Combine(
+                    logDir,
+                    $"{DateTime.Now:yyyy-MM-dd HH}.txt"
+                );
             if (!File.Exists(logPath))
             {
                 File.Create(logPath).Close();
