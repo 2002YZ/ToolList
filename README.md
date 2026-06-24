@@ -344,6 +344,101 @@ byte[] frame =
     );
 ```
 
+### 8. `LogHelper` 类 (`Helper`)
+
+提供简单的日志记录功能，采用单例模式实现，按小时自动创建日志文件，适用于设备通信、MES系统、PLC监控等场景。
+
+#### 特性
+
+* 单例模式，全局唯一实例
+* 自动创建日志文件
+* 按小时分割日志
+* 支持成功日志和错误日志
+* 自动追加写入
+
+#### 日志文件格式
+
+```text
+log/
+├── 2026-06-24 08.txt
+├── 2026-06-24 09.txt
+└── 2026-06-24 10.txt
+```
+
+#### 方法
+
+| 方法                                 | 说明     |
+| ---------------------------------- | ------ |
+| `CreateLogFile()`                  | 创建日志文件 |
+| `WriteLog(string log, int status)` | 写入日志   |
+
+#### 参数说明
+
+| 参数         | 说明   |
+| ---------- | ---- |
+| `log`      | 日志内容 |
+| `status=1` | 成功日志 |
+| `status=0` | 错误日志 |
+
+#### 日志格式
+
+成功日志：
+
+```text
+2026-06-24 10:30:01 Success PLC连接成功
+```
+
+错误日志：
+
+```text
+2026-06-24 10:31:15 Error PLC连接失败
+```
+
+#### 示例
+
+```csharp
+// 获取日志实例
+LogHelper logger = LogHelper.Instance;
+
+// 写入成功日志
+logger.WriteLog(
+    "PLC连接成功",
+    1
+);
+
+// 写入错误日志
+logger.WriteLog(
+    "PLC连接失败",
+    0
+);
+```
+
+#### MES项目示例
+
+```csharp
+try
+{
+    bool result = plc.Connect();
+
+    if (result)
+    {
+        LogHelper.Instance.WriteLog(
+            "PLC连接成功",
+            1
+        );
+    }
+}
+catch (Exception ex)
+{
+    LogHelper.Instance.WriteLog(
+        ex.Message,
+        0
+    );
+}
+```
+
+
+
 ---
 
 ## 🚀 快速开始
