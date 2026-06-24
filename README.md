@@ -332,7 +332,7 @@ byte[] frame =
     );
 ```
 
-### 8. `LogHelper` 类 (`Helper`)
+### 9. `LogHelper` 类 (`Helper`) （注意：使用这个类时要与 FileHelper` 类配合。LogHelper` 类调用了 FileHelper中的方法）
 
 提供简单的日志记录功能，采用单例模式实现，按小时自动创建日志文件，适用于设备通信、MES系统、PLC监控等场景。
 
