@@ -1,19 +1,6 @@
-# Helper
+# Helper 工具库文档
 
-本项目是一套适用于工业自动化上位机开发的 C# 工具库，包含：
-
-- Modbus RTU/TCP 通信
-- SQL Server 数据库访问
-- JSON 序列化
-- CSV 文件导入导出
-- INI 配置文件管理
-- 文件与目录操作
-- 十六进制数据转换
-
-可直接用于 WinForm、WPF、MES、SCADA、PLC 通信等项目开发。
-# Modbus 工具库文档
-
-本项目是一套适用于工业自动化上位机开发的 C# 工具库，包含：
+本项目是一套适用于工业自动化上位机开发的 C# 通用帮助工具库，包含：
 
 - Modbus RTU/TCP 通信
 - SQL Server 数据库访问
@@ -22,6 +9,7 @@
 - INI 配置文件管理
 - 文件与目录操作
 - 十六进制数据转换
+- 日志记录功能
 
 可直接用于 WinForm、WPF、MES、SCADA、PLC 通信等项目开发。
 
